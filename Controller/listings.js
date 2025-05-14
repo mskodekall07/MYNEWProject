@@ -7,13 +7,13 @@ const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 module.exports.index=async (req,res)=>{
    
     const allListings= await  Listing.find({});
-    res.render("/Users/mahanandaherundi/MAJORPROJECT/views/listings/index.ejs",{allListings});
+    res.render("listings/index.ejs",{allListings});
           
   };
 
   module.exports.renderNewForm=(req,res)=>{
     //console.log(req.user);  
-      res.render("/Users/mahanandaherundi/MAJORPROJECT/views/listings/new.ejs");
+      res.render("listings/new.ejs");
   };
 
   module.exports.showListing=async (req,res)=>{
@@ -24,7 +24,7 @@ module.exports.index=async (req,res)=>{
       res.redirect("/listings");
    }
    console.log(listing);
-   res.render("/Users/mahanandaherundi/MAJORPROJECT/views/listings/show.ejs",{listing});
+   res.render("listings/show.ejs",{listing});
 };
 
 module.exports.createListing=async (req,res,next)=>{ 
@@ -74,7 +74,7 @@ module.exports.createListing=async (req,res,next)=>{
    }
    let originalImageUrl=listing.image.url;
    originalImageUrl=originalImageUrl.replace("/upload", "/upload/w_250");
-   res.render("/Users/mahanandaherundi/MAJORPROJECT/views/listings/edit.ejs", {listing,originalImageUrl});
+   res.render("listings/edit.ejs", {listing,originalImageUrl});
 
 };
   
